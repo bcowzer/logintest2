@@ -1,0 +1,22 @@
+
+<div class="container" ng-controller="LoginController">
+
+
+<!-- creating Sign in form, source (incl css): http://getbootstrap.com/examples/signin/ -->
+ 			   
+
+     			       <form class="form-signin" role="form" ng-submit = "login()">
+        			       <h2 class="form-signin-heading">Please sign in</h2>
+        				     <input type="text" class="form-control" placeholder="User name" ng-model="credentials.username" required autofocus>
+        				     <input type="password" class="form-control" placeholder="Password" ng-model="credentials.password" required>
+
+       				       
+       				        <button class="btn btn-lg btn-primary btn-sm" type="submit">Sign in</button>
+       				       
+      			        </form>
+    
+    
+                    	<script src="https://code.jquery.com/jquery.js"></script>  
+    </div>
+
+
