@@ -37,26 +37,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
 });
 /* from https://github.com/hollyschinsky/MyAngularPhoneGapProject/blob/master/www/js/controllers.js */
 
- app.controller("cameraController", function($scope) {
-    $scope.takePic = function() {
-        var options = {
-            quality: 50,
-            destinationType: Camera.DestinationType.DATA_URL,
-            sourceType: 1, // 0:Photo Library, 1=Camera, 2=Saved Photo Album
-            encodingType: 0 // 0=JPG 1=PNG
-        }
-        // Take picture using device camera and retrieve image as base64-encoded string
-        navigator.camera.getPicture(onSuccess,onFail,options);
-    }
-    var onSuccess = function(imageData) {
-        console.log("On Success! ");
-        $scope.picData = "data:image/jpeg;base64," +imageData;
-        $scope.$apply();
-    };
-    var onFail = function(e) {
-        console.log("On fail " + e);
-    };
-}
+
 
 
 
