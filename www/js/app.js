@@ -16,6 +16,7 @@ app.config(function($routeProvider) {
 
 });
 
+    
 app.factory("AuthenticationService", function($location) {
   return {
     login: function(credentials) {
@@ -35,9 +36,17 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
     AuthenticationService.login($scope.credentials);
   }
 });
+
+    app.controller("testController", function($scope) {
+              $scope.test = function() {
+    alert ("this is working");
+    }
+});
+
+
 /* from https://github.com/hollyschinsky/MyAngularPhoneGapProject/blob/master/www/js/controllers.js */
 
- app.controller("cameraController", function($scope) {
+ /*app.controller("cameraController", function($scope) {
     $scope.takePic = function() {
         var options = {
             quality: 50,
@@ -46,17 +55,47 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
             
         }
         // Take picture using device camera and retrieve image as base64-encoded string
-        navigator.camera.getPicture(onSuccess,onFail,options);
+        navigator.camera.getPicture(onSuccess,onFail,options); 
     }
     var onSuccess = function(imageData) {
         console.log("On Success! ");
         $scope.picData = imageData;
         $scope.$apply();
+    }; */
+
+
+
+     app.controller("cameraContoller", function($scope) {
+     $scope.takePic  = function () {
+        navigator.camera.getPicture(onSuccess, onFail, {
+            quality: 50, 
+            destinationType: Camera.DestinationType.FILE_URI 
+        });
+     }
+     
+     
+         
+         var onSuccess = function (imageData) {
+            console.log(JSON.stringify(imageData));
+
+        $scope.userPhoto = document.getElementById('userPhoto');
+ 
+
+        $scope.userPhoto.style.display = 'block';
+ 
+
+        $scope.userPhoto.src = imageData;
     };
+
+
     var onFail = function(e) {
         console.log("On fail " + e);
-    };
-});
+    }
+    });
+
+   
+
+    
 
 
 
