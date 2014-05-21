@@ -1,6 +1,6 @@
 
 
-<div>
+<div ng-controller = "cameraController">
     <h1>Camera function</h1></div><br>
     
 <!--<button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br> -->
@@ -9,7 +9,7 @@
 <button ng-click ="takePic()" >Click</button> Take a photo by clicking here<br>
     <!-- use img onclick....src.. to call from icon -->
 
-<img width = "300" height = "450"  id = "{{userPhoto}}" />
+<img width = "300" height = "450"  ng-src= "{{picData}}" />
 
     
    
