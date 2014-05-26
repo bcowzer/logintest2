@@ -48,7 +48,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
     $scope.takePic = function() {
          
       
-        navigator.camera.getPicture(onPhotoFileSuccess, onFail, {
+        navigator.camera.getPicture(onSuccess, onFail, {
             quality: 50, 
             destinationType: Camera.DestinationType.FILE_URI 
         })
