@@ -53,7 +53,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
             destinationType: Camera.DestinationType.FILE_URI 
         })
     }
-    var onSuccess = function(imageData) {
+    var onSuccess = function(imageURI) {
         console.log("On Success! ");
         $scope.picData = imageData;
         $scope.$apply();
