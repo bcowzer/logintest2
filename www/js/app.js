@@ -48,12 +48,12 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
     $scope.takePic = function() {
          
       
-        navigator.camera.getPicture(onSuccess, onFail, {
+        navigator.camera.getPicture($scope, onSuccess, onFail, {
             quality: 50, 
             destinationType: Camera.DestinationType.DATA_URI 
         })
     }
-    var onSuccess = function(imageData) {
+    $scope.onSuccess = function(imageData) {
         console.log("On Success! ");
         $scope.picData = "data:image/jpeg;base64," + imageData;
         $scope.$apply();
