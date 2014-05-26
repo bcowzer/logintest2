@@ -55,7 +55,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
     }
     var onSuccess = function(imageData) {
         console.log("On Success! ");
-        $scope.picData = "data:image/jpeg;base64," +imageData;
+        $scope.picData = imageData;
         $scope.$apply();
     };
     var onFail = function(e) {
