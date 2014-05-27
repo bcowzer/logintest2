@@ -15,13 +15,26 @@
    
 </div>
 
-<div>
-<form>
-    <br />
-Comments:<br />
-<textarea name="comments" id="comments" placeholder="Type Comment here.." style="width:300px;height:300px;color:#53760D;font:24px/30px cursive;">
+<div data-ng-controller="commentsContoller"> <!-- attach controller -->
 
-</textarea>
-<input type="submit" value="Submit" style= "background-color:#3399FF; color:white; "/>
-</form>
+
+
+<p><h2>Comments: </h2>   <textarea  data-ng-model="newComment" placeholder="Type comment here.." style="width:300px; height:300px; color:#53760d; font:24px/30px cursive;"></textarea> </p> <!--binds input to task-->
+
+
+
+<button data-ng-click="addComment()">Submit</button> <!-- submits input to function in controller-->
+<br/>
+
+      
+    
+           
+            <ul style="list-style:none" ng-repeat="nextComment in comments"> <!-- iterates through toDoList-->
+            <li><h3> {{nextComment.text}} </h3></li>
+            </ul>
+    
+</div>
+
+   
+   
 </div>

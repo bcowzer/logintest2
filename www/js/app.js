@@ -37,6 +37,31 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
   }
 });
 
+ app.controller('commentsContoller',function($scope) {
+
+		$scope.comments=
+            [
+            {text:''}, 
+            
+		];
+
+
+		$scope.addComment = function () {  
+			
+        
+            $scope.comments.push(
+
+				{
+					text: $scope.newComment,
+				
+				}
+			)
+            $scope.newComment= '';
+           
+		}
+
+	});
+
   
 
 
