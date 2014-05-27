@@ -37,11 +37,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
   }
 });
 
-    app.controller("testController", function($scope) {
-              $scope.test = function() {
-    alert ("this is working");
-    }
-});
+  
 
 
     app.controller("cameraController", function($scope) {
