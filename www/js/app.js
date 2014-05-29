@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
   });
 
   $routeProvider.when('/home', {
-    templateUrl: 'views/home2.html',
+    templateUrl: 'views/home1.html',
     controller: 'cameraController'
   });
 
@@ -67,9 +67,17 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
         })
     }
     var onSuccess = function(imageData) {
-        console.log("On Success! ");
-        $scope.picData = imageData;
-        $scope.$apply();
+        
+         var userPhoto = document.getElementById('userPhoto');
+ 
+
+        userPhoto.style.display = 'block';
+ 
+
+        userPhoto.src = imageData;
+       
+       /* $scope.picData = imageData;
+        $scope.$apply();*/
     };
     var onFail = function(e) {
         console.log("On fail " + e);
