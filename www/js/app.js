@@ -67,7 +67,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
         })
     }
             function onSuccess (imageData) {
-        
+        alert ("here's an alert!");
          var userPhoto = document.getElementById('userPhoto');
  
 
