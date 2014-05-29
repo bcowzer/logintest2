@@ -63,11 +63,11 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
       
         navigator.camera.getPicture( onSuccess, onFail, {
             quality: 50, 
-            destinationType: Camera.DestinationType.FILE_URI
+            destinationType: Camera.DestinationType.FILE_URI,
+            saveToPhotoAlbum: true
         })
     }
-            function onSuccess (imageData) {
-        alert ("here's an alert!");
+            var onSuccess = function (imageData) {
          var userPhoto = document.getElementById('userPhoto');
  
 
