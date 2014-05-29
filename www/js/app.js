@@ -38,28 +38,20 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
 });
 
  app.controller('commentsContoller',function($scope) {
-
 		$scope.comments=
             [
-            {text:''}, 
-            
+            {text:''},          
 		];
-
 
 		$scope.addComment = function () {  
 			
-        
-            $scope.comments.push(
-
+                    $scope.comments.push(
 				{
 					text: $scope.newComment,
-				
 				}
 			)
-            $scope.newComment= '';
-           
+            $scope.newComment= '';   
 		}
-
 	});
 
   
@@ -71,12 +63,12 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
       
         navigator.camera.getPicture( onSuccess, onFail, {
             quality: 50, 
-            destinationType: Camera.DestinationType.DATA_URL
+            destinationType: Camera.DestinationType.FILE_URI
         })
     }
     var onSuccess = function(imageData) {
         console.log("On Success! ");
-        $scope.picData = "data:image/jpeg;base64," + imageData;
+        $scope.picData = imageData;
         $scope.$apply();
     };
     var onFail = function(e) {
