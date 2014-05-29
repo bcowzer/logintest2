@@ -20,6 +20,7 @@
          <icon src= "images/camera.png" />
       
 <feature name="http://api.phonegap.com/1.0/camera"/>
+        <feature name="http://api.phonegap.com/1.0/file"/>
         <gap:platform name="android" />
         <gap:platform name="ios"/>
 <gap:plugin name="org.apache.cordova.camera" version="0.2.9" />
