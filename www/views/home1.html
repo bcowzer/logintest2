@@ -1,16 +1,63 @@
 
 
 <div>
+    <script src="phonegap.js"></script>
+<script type="text/javascript" charset="utf-8">
+ 
+    var pictureSource; // picture source
+    var destinationType; // sets the format of returned value
+ 
+// Wait for PhoneGap to connect with the device
+//
+    document.addEventListener("deviceready",onDeviceReady,false);
+ 
+// PhoneGap is ready to be used!
+//
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
+
+
+
+    
+    function onPhotoFileSuccess(imageData) {
+
+        var userPhoto = document.getElementById('userPhoto');
+ 
+
+        userPhoto.style.display = 'block';
+ 
+
+        userPhoto.src = imageData;
+    }
+
+  function capturePhotoWithFile() {
+        navigator.camera.getPicture(onPhotoFileSuccess, onFail, {
+            quality: 50, 
+            destinationType: Camera.DestinationType.FILE_URI 
+        });
+    }
+
+ 
+// Called if something bad happens.
+//
+    function onFail(message) {
+        alert('Failed because: ' + message);
+    }
+ 
+</script>
     <h1>Camera function</h1></div><br>
     
 <!--<button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br> -->
 <p>Capture Photo With Device camera</p>
 
-<!--<img src = "images/camera.png" ng-click ="takePic()" ></img> <br>
-    <!-- use img onclick....src.. to call from icon -->
-<button onclick="takePic();">Capture a Photo With the Device Camera</button> <br>
-<img width = "300" height = "450" id="userPhoto" src="" />
+<!--<img src = "images/camera.png" ng-click ="takePic()" ></img> <br> -->
 
+<button onclick="capturePhotoWithFile();">Capture a Photo With the Device Camera (please)</button> <br>
+    <!-- use img onclick....src.. to call from icon -->
+
+<img width = "300" height = "450" id="userPhoto" src="" />
     
    
 </div>
