@@ -54,56 +54,9 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
 		}
 	});
 
-  app.directive('camera', function() {
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        link: function(scope, elm, attrs, ctrl) {
-            elm.on('click', function() {
-                navigator.camera.getPicture(
-                    function(imageURI) {
-                        scope.$apply(function() {
-                            ctrl.$setViewValue(imageURI);
-                        });
-                    },
-                    function(err) {
-                        ctrl.$setValidity('error', false);
-                    }, {quality: 50, 
-                        destinationType: Camera.DestinationType.FILE_URI});
-            });
-        }
-    };
-});
+ 
 
-    app.controller('MyCtrl1', function($scope) {
-            $scope.myPictures = [];
-            $scope.$watch('myPicture', function(value) {
-                if (value) {
-                    $scope.myPictures.push(value);
-                }
-            }, true);
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   /* app.controller("cameraController", function($scope) {
+   app.controller("cameraController", function($scope) {
     $scope.takePic = function() {
          
       
