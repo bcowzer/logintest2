@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
   });
 
   $routeProvider.when('/home', {
-    templateUrl: 'views/home2.html',
+    templateUrl: 'views/home3.html',
     controller: 'cameraController'
   });
 
