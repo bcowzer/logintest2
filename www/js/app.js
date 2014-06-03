@@ -60,14 +60,14 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
     $scope.takePic = function() {
          
       
-        navigator.camera.getPicture( onSuccess, onFail, {
+        navigator.camera.getPicture(onSuccess,onFail, {
             quality: 50, 
             destinationType: Camera.DestinationType.FILE_URI,
-            saveToPhotoAlbum: true
+            saveToPhotoAlbum: true;
         })
     }
             function onSuccess(imageData) {
-                $scope.picData = "something";
+                $scope.picData = imageData;
                 $scope.$apply();
     };
     var onFail = function(e) {
