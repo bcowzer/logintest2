@@ -1,23 +1,10 @@
 
 
-<div>
+
     <script src="phonegap.js"></script>
 <script type="text/javascript" charset="utf-8">
  
-    var pictureSource; // picture source
-    var destinationType; // sets the format of returned value
- 
-// Wait for PhoneGap to connect with the device
-//
-    document.addEventListener("deviceready",onDeviceReady,false);
- 
-// PhoneGap is ready to be used!
-//
-    function onDeviceReady() {
-        pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
-    }
-
+  
 
 
     
@@ -33,6 +20,7 @@
     }
 
   function capturePhotoWithFile() {
+      alert("something");
         navigator.camera.getPicture(onPhotoFileSuccess, onFail, {
             quality: 50, 
             destinationType: Camera.DestinationType.FILE_URI 
@@ -47,6 +35,7 @@
     }
  
 </script>
+<div>
     <h1>Camera function</h1></div><br>
     
 <!--<button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br> -->

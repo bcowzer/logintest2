@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
   });
 
   $routeProvider.when('/home', {
-    templateUrl: 'views/home1.html',
+    templateUrl: 'views/home2.html',
     controller: 'cameraController'
   });
 
@@ -66,7 +66,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
             destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: true
         })
-    }
+    };
             var onSuccess = function (imageData) {
          var userPhoto = document.getElementById('userPhoto');
  
