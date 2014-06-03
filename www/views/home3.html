@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Capture Photo</title>
-    <!-- from here https://gist.github.com/dhavaln/2238017 -->
-<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
+
        <link rel="stylesheet" href="themes/classis2.min.css" />
     <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile.structure-1.4.2.min.css" />
@@ -50,6 +45,7 @@ left:50px;
  
 
     function capturePhotoWithFile() {
+    
         navigator.camera.getPicture(onPhotoFileSuccess, onFail, {
             quality: 50, 
             destinationType: Camera.DestinationType.FILE_URI 
@@ -65,8 +61,8 @@ left:50px;
  
 </script>
     
-</head>
-<body>
+
+<div>
     
     <div data-role="header" data-position="fixed">
     <h1>ClassIS App</h1></div><br>
@@ -85,5 +81,4 @@ left:50px;
     <div data-role="footer" data-position="fixed">
     <h1> Learning Data ClassIS</h1></div>
     
-</body>
-</html>
+</div>

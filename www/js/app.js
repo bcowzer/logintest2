@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
   });
 
   $routeProvider.when('/home', {
-    templateUrl: 'views/home3.html',
+    templateUrl: 'views/home2.html',
     controller: 'cameraController'
   });
 
@@ -54,10 +54,56 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
 		}
 	});
 
-  
+  app.directive('camera', function() {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, elm, attrs, ctrl) {
+            elm.on('click', function() {
+                navigator.camera.getPicture(
+                    function(imageURI) {
+                        scope.$apply(function() {
+                            ctrl.$setViewValue(imageURI);
+                        });
+                    },
+                    function(err) {
+                        ctrl.$setValidity('error', false);
+                    }, {quality: 50, 
+                        destinationType: Camera.DestinationType.FILE_URI});
+            });
+        }
+    };
+});
+
+    app.controller('MyCtrl1', function($scope) {
+            $scope.myPictures = [];
+            $scope.$watch('myPicture', function(value) {
+                if (value) {
+                    $scope.myPictures.push(value);
+                }
+            }, true);
+        });
 
 
-    app.controller("cameraController", function($scope) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* app.controller("cameraController", function($scope) {
     $scope.takePic = function() {
          
       
@@ -65,19 +111,11 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
             quality: 50, 
             destinationType: Camera.DestinationType.DATA_URL,
             saveToPhotoAlbum: true
-        })
-    };
-            var onSuccess = function (imageData) {
-         var userPhoto = document.getElementById('userPhoto');
- 
-
-        userPhoto.style.display = 'block';
- 
-
-        userPhoto.src = "data:image/jpeg;base64," + imageData;
-       
-       /* $scope.picData = imageData;
-        $scope.$apply();*/
+        });
+    }
+            var onSuccess = function(imageData) {
+                $scope.picData = "data:image/jpeg;base64," +imageData;
+                $scope.$apply();
     };
     var onFail = function(e) {
         console.log("On fail " + e);

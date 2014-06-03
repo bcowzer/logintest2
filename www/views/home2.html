@@ -2,16 +2,35 @@
 
 <div ng-controller = "cameraController">
     <h1>Camera function</h1></div><br>
+
+
+<button camera ng-model='myPicture'>Take Picture</button>
+
+<ul ng-repeat="onepic in myPictures">
+    <li style="list-style: none">
+        <input type="image" 
+                  src="{{onepic}}" 
+                  width="250" 
+                  height="390" 
+                  alt="error"/>
+    </li>
+</ul>
+
+
+
+
+
+
     
-<!--<button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br> -->
+<!--<button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
 <p>Capture Photo With Device camera</p>
 
-<button ng-click ="takePic()" >Click</button> Take a photo by clicking here<br>
+<!--<button ng-click ="takePic()" >Click</button> Take a photo by clicking here<br>
     <!-- use img onclick....src.. to call from icon -->
 
-<!--<img width = "300" height = "450"  ng-src= "{{picData}}" alt = "should be a photo here"> -->
+<!--<img width = "300" height = "450"  ng-src= "{{picData}}" alt = "should be a photo here"> 
 
-   <img width = "300" height = "450" id="userPhoto" src="" />
+   <img width = "300" height = "450" id="userPhoto" src="" /> -->
    
 </div>
 
