@@ -63,7 +63,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
       
         navigator.camera.getPicture( onSuccess, onFail, {
             quality: 50, 
-            destinationType: Camera.DestinationType.FILE_URI,
+            destinationType: Camera.DestinationType.DATA_URL,
             saveToPhotoAlbum: true
         })
     };
@@ -74,7 +74,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
         userPhoto.style.display = 'block';
  
 
-        userPhoto.src = imageData;
+        userPhoto.src = "data:image/jpeg;base64," + imageData;
        
        /* $scope.picData = imageData;
         $scope.$apply();*/
