@@ -69,11 +69,11 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
             function onSuccess(imageData) {
                 $scope.picData = imageData;
                 $scope.$apply();
-    };
+    }
     var onFail = function(e) {
         console.log("On fail " + e);
-    };
-    };
+    }
+    }
 });
 
    /* from https://github.com/hollyschinsky/MyAngularPhoneGapProject/blob/master/www/js/controllers.js */
