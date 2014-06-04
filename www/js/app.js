@@ -65,13 +65,14 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
             destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: true
         });
-    }
+    
             function onSuccess(imageData) {
-                $scope.picData = "something";
+                $scope.picData = imageData;
                 $scope.$apply();
     };
     var onFail = function(e) {
         console.log("On fail " + e);
+    };
     };
 });
 
