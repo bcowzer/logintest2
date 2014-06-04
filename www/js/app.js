@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
   });
 
   $routeProvider.when('/home', {
-    templateUrl: 'views/home2.html',
+    templateUrl: 'views/home1.html',
     controller: 'cameraController'
   });
 
@@ -59,17 +59,23 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
    app.controller("cameraController", function($scope) {
     $scope.takePic = function() {
          
-      
+      alert ("something");
         navigator.camera.getPicture(onSuccess,onFail, {
             quality: 50, 
             destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: true
         });
-    
-            function onSuccess(imageData) {
-                $scope.picData = imageData;
-                $scope.$apply();
+      function onSuccess(imageData) {
+
+        var userPhoto = document.getElementById('userPhoto');
+ 
+
+        userPhoto.style.display = 'block';
+ 
+
+        userPhoto.src = imageData;
     }
+    
     var onFail = function(e) {
         console.log("On fail " + e);
     }
@@ -80,7 +86,12 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
 
 
 
-    
+
+/*
+            function onSuccess(imageData) {
+                $scope.picData = imageData;
+                $scope.$apply();
+    } */
 
 
 
