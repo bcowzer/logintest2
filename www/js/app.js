@@ -64,10 +64,10 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
             quality: 50, 
             destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: true
-        })
+        });
     }
             function onSuccess(imageData) {
-                $scope.picData = imageData;
+                $scope.picData = "something";
                 $scope.$apply();
     };
     var onFail = function(e) {
