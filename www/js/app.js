@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
   });
 
   $routeProvider.when('/home', {
-    templateUrl: 'views/home1.html',
+    templateUrl: 'views/home2.html',
     controller: 'cameraController'
   });
 
@@ -57,7 +57,30 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
  
 
    app.controller("cameraController", function($scope) {
-    $scope.takePic = function() {
+        $scope.takePic = function() {
+        var options =   {
+            quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: 1,      // 0:Photo Library, 1=Camera, 2=Saved Photo Album
+            encodingType: 0     // 0=JPG 1=PNG
+        }
+        navigator.camera.getPicture(onSuccess,onFail,options);
+    }
+    var onSuccess = function(FILE_URI) {
+        console.log(FILE_URI);
+        $scope.picData = FILE_URI;
+        $scope.$apply();
+    };
+    
+    var onFail = function(e) {
+        console.log("On fail " + e);
+    }
+    }
+});
+
+   /* from https://github.com/hollyschinsky/MyAngularPhoneGapProject/blob/master/www/js/controllers.js 
+
+  $scope.takePic = function() {
          
       
         navigator.camera.getPicture(onSuccess,onFail, {
@@ -65,8 +88,10 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
             destinationType: Camera.DestinationType.FILE_URI,
             saveToPhotoAlbum: true
         });
+        
+        
       function onSuccess(imageData) {
-alert ("something");
+          alert ("something");
         var userPhoto = document.getElementById('userPhoto');
  
 
@@ -75,16 +100,6 @@ alert ("something");
 
         userPhoto.src = imageData;
     }
-    
-    var onFail = function(e) {
-        console.log("On fail " + e);
-    }
-    }
-});
-
-   /* from https://github.com/hollyschinsky/MyAngularPhoneGapProject/blob/master/www/js/controllers.js */
-
-
 
 
 /*
