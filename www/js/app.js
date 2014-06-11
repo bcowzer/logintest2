@@ -67,7 +67,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
         navigator.camera.getPicture(onSuccess,onFail,options);
     }
     var onSuccess = function(FILE_URI) {
-        console.log(FILE_URI);
+        alert("something");
         $scope.picData = FILE_URI;
         $scope.$apply();
     };
