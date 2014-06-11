@@ -75,7 +75,7 @@ app.controller("LoginController", function($scope, $location, AuthenticationServ
     var onFail = function(e) {
         console.log("On fail " + e);
     }
-    }
+    
 });
 
    /* from https://github.com/hollyschinsky/MyAngularPhoneGapProject/blob/master/www/js/controllers.js 
