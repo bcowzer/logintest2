@@ -10,13 +10,10 @@
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> -->
 <style>
-
-    #params { position:absolute; visibility:show; left: 350px; top: 200px; z-index:200; } 
-    #statementsbody { position:absolute; visibility:show; left: 350px; top: 25px; z-index:200; } 
-    #header {position:relative; visibility:show; left: 400px; top: -20px; z-index:200;}
-    
-    #statements {position:relative;top:50px;}
-    #attachphoto {position:relative;top:60px;}
+img{
+position:relative;
+left:50px;
+}
 </style>
 <script src="phonegap.js"></script>
 <script type="text/javascript" charset="utf-8">
@@ -37,10 +34,7 @@
     function capturePhotoWithFile() {
         navigator.camera.getPicture(onPhotoFileSuccess, onFail, {
             quality: 50, 
-            destinationType: Camera.DestinationType.FILE_URI,
-            saveToPhotoAlbum: true,
-            targetWidth: 200,
-            targetHeight: 300,
+            destinationType: Camera.DestinationType.FILE_URI 
         });
     }
 
@@ -53,70 +47,59 @@
 </head>
 <body>
     
-    <div data-role="header" id="header" data-position="fixed">
+    <div data-role="header" data-position="fixed">
     <h1>ClassIS App</h1></div><br>
     
 
 <button onclick="capturePhotoWithFile();">Capture a Photo With the Device Camera</button> <br>
     <!-- use img onclick....src.. to call from icon -->
 
-<img width = "300" height = "450" id="userPhoto" src="" style=""/>
+<img width = "300" height = "450" id="userPhoto" src="" />
     
     <!--Parameters selected: where teacher chooses class, profile and component/strandid to upload a picture-->
 <div class ="container" id='params' style='display:'>
-	Please select Class
-    <form name = "userclass">
-	<select name='class' onChange = "classid = this.value" id='class'>
+	Class
+	<select name='class' id='class'>
 		<option value='0'> </option>
-		<option value='674'>EYNAA</option>
-		<option value='675'>EYRAA</option>
+		<option value='class1'>Class 1</option>
+		<option value='class2'>Class 2</option>
 	</select>
-        </form>
 	<br>
-	Select Profile
-    <form name = "userprofile">
-	<select name='profile' onChange= "profileid = this.value" id='profile'>
-        <option value='0'></option>
-		<option value='ELG'>Early learning Goals</option>
-		<option value='EYFS2436'>Early Years Foundation Stage 2436</option>
-		<option value='EYFS3648'>Early Years Foundation Stage 3648</option>
-	</select>
-        </form>
-	<br>
-	Select Component
-    <form name ="usercomponent">
-	<select name='component' onChange="componentid = this.value" id='component'>
+	Profile
+	<select name='profile' id='profile'>
 		<option value='0'> </option>
-		<option value='UW:TW'>UW:TW</option>
-		<option value='PD:MH'>PD:MH</option>
+		<option value='profile1'>Profile 1</option>
+		<option value='profile2'>Profile 2</option>
+		<option value='profile3'>Profile 3</option>
+	</select>
+	<br>
+	Component
+	<select name='component' id='component'>
+		<option value='0'> </option>
+		<option value='component1'>Component 1</option>
+		<option value='component2'>Component 2</option>
 		<option value='component3'>Component 3</option>
 	</select>
-        </form>
 	<br>
-	<input type="button" value='Go' onclick="submit();">
+	<input type="button" value='Get statements' onclick="submit();">
 </div>
 
 
 <!--When parameters are selected it's the window will be seen, where the teacher is able to select students, a statement and upload multiples pictures-->
-<div id='statementsbody' style='display:none;'>
-	<br>
-	Select Students in photo<br>
+<div class="container" id='statementsbody' style='display:none;'>
+	Classis<br>
+	Students<br>
 	<div id='students' style='float:left;'></div><br>
-    <br>
-       
-        
-	<div id='statements'>
-     Choose a Statement to tag in photo<br>
-    <br></div>
-    
+	Statements<br>
+	<div id='statements'></div>
 	<div id='attachphoto'>
-        <br>
-		Select the photo from your device gallery<br><input type="file" name="img" id='photo' multiple><br><br>
-		Now, upload to Classis website<input type="button" value='Upload' onclick="return upload();">
+		Attachment<br><input type="file" name="img" id='photo' multiple><br><br>
+		<input type="button" value='Upload' onclick="return upload();">
 	</div>
-	
-	<!--<img src="" alt="Image preview" id="preview"> -->
+	<hr>
+	<img src="" alt="Image preview" id="preview">
 </div>
+
 
 <script>
 	/*Local stored apiURL,username,token,schoolid*/
@@ -124,9 +107,9 @@
 	var user='admin2';
 	var token='132fbdf473cd76432357a3e146032b28';
 	var schoolid='demoes';
-	var classid=document.userclass.class.value;
-	var componentid= document.usercomponent.component.value;
-	var profileid=document.userprofile.profile.value;
+	var classid='675';
+	var componentid='CL:LA';
+	var profileid='ELG';
 
 	function statementsbody(){
 		document.getElementById('statementsbody').style.display='block';
@@ -156,10 +139,7 @@
 						studentdiv.id="student";
 						studentdiv.style.cssText="float:left;";
 						studentdiv.innerHTML="<input type='checkbox' name='students[]' value='"+data.students[i].sid+"'>";
-                        /*studentdiv.innerHTML+="<img src='"+data.students[i].profilephoto+"'>";*/
-                        
-						studentdiv.innerHTML+="<img src='"+data.students[i].profilephoto+"'>"+data.students[i].forename+" "+data.students[i].surname+"";
-                        
+						studentdiv.innerHTML+="<img src='"+data.students[i].profilephoto+"'>";
 						document.getElementById('students').appendChild(studentdiv);
 						}
 					}
@@ -196,63 +176,6 @@
 		}
     
     
-		/*Upload pictures*/
-		var upload=function() {
-			var photo=document.getElementById("photo");
-			var files=photo.files;
-			var imagesdata={};
-			for(var i=0;i<files.length;i++){
-				var reader=new FileReader();
-				reader.onload = (function(theFile){
-					var fileName=theFile.name;
-					var count=i;
-					var filesno=files.length-1;
-					return function(e){
-						imagesdata[count]={};
-						imagesdata[count]['photo']=e.target.result;
-						imagesdata[count]['name']=fileName;
-						/*document.getElementById('preview').src=e.target.result;*/
-						if(count==filesno){
-							var checkboxes=document.getElementsByName('students[]');
-							var checkedCheckboxes={};
-							for(var i=0; i<checkboxes.length; i++) {
-								if(checkboxes[i].checked){
-									checkedCheckboxes[i]=checkboxes[i].value;
-									}
-								}
-
-							var radiobuttons=document.getElementsByName('statement');
-							var checkedRadio='';
-							for (var i=0; i<radiobuttons.length; i++) {
-								if(radiobuttons[i].checked){
-									checkedRadio=radiobuttons[i].value;
-									}
-								}
-
-							var xmlhttpf=new XMLHttpRequest();
-							xmlhttpf.onreadystatechange=function(){
-								if(xmlhttpf.readyState==4 && xmlhttpf.status==200){
-									console.log(xmlhttpf.responseText);
-									var data=JSON.parse(xmlhttpf.responseText);
-									console.log(data);
-									if(data.success){
-										alert('File uploaded');
-										}
-									}
-								};
-							xmlhttpf.open("POST",apiURL+"?schoolid="+schoolid+"&username="+user+"&token="+token+"&action=poststatementphoto&post=true",true);
-							xmlhttpf.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-							xmlhttpf.send(JSON.stringify({students:checkedCheckboxes,photos:imagesdata,skillid:checkedRadio}));
-							}
-						};
-					})(files[i]);
-
-				reader.readAsDataURL(files[i]);
-				}
-
-			return false;
-			};
-    
     
 		document.getElementById('register').style.display='block';
 		function register(){
@@ -285,7 +208,8 @@
         <img src ="images/classis.jpg">
         </div>
     
-    
+    <div data-role="footer" data-position="fixed">
+    <h1> Learning Data ClassIS</h1></div>
     
 </body>
 </html>
